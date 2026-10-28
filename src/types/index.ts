@@ -25,6 +25,7 @@ export interface BookingFormData {
 }
 
 export interface BookingFormErrors {
+  [key: string]: string | undefined;
   guestName?: string;
   checkIn?: string;
   checkOut?: string;

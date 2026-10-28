@@ -1,7 +1,7 @@
 import { useState, useId } from 'react';
 import { MessageCircle, AlertCircle } from 'lucide-react';
 import { ROOMS } from '../lib/config';
-import { buildWhatsAppURL, openWhatsApp, todayStr, futureDateStr, calcNights, formatDateDisplay } from '../lib/whatsapp';
+import { buildWhatsAppURL, openWhatsApp, todayStr, calcNights, formatDateDisplay } from '../lib/whatsapp';
 import { validateBookingForm, defaultBookingForm } from '../lib/booking';
 import type { BookingFormData, BookingFormErrors } from '../types';
 
