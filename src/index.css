@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Styles ──────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-hotel-ivory text-hotel-charcoal font-sans;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    line-height: 1.2;
+  }
+
+  h5, h6 {
+    @apply font-sans font-semibold;
+  }
+
+  /* Ensure images don't cause layout shift */
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Visible focus indicators for keyboard nav */
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-hotel-green rounded-sm;
+  }
+
+  /* Remove outline for mouse clicks only */
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ─── Component Utilities ───────────────────────────────────────────────────── */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-hotel-green text-white font-sans font-medium
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-hotel-green-light
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hotel-green
+           active:scale-[0.98]
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-hotel-green text-hotel-green font-sans font-medium
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-hotel-green hover:text-white
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hotel-green
+           active:scale-[0.98];
+  }
+
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2
+           bg-[#25D366] text-white font-sans font-medium
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-[#20bd5a]
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]
+           active:scale-[0.98];
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-hotel-gold text-hotel-charcoal font-sans font-medium
+           px-6 py-3 rounded-lg
+           transition-all duration-200
+           hover:bg-hotel-gold-dark hover:text-white
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hotel-gold
+           active:scale-[0.98];
+  }
+
+  .section-label {
+    @apply text-hotel-gold font-sans font-medium tracking-widest uppercase text-xs;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl md:text-4xl text-hotel-charcoal leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-hotel-muted font-sans leading-relaxed;
+  }
+
+  .card {
+    @apply bg-white rounded-xl border border-hotel-border shadow-sm
+           transition-all duration-200 hover:shadow-md;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-hotel-charcoal mb-1;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-2.5 rounded-lg border border-hotel-border
+           bg-white text-hotel-charcoal font-sans text-sm
+           focus:outline-none focus:ring-2 focus:ring-hotel-green focus:border-transparent
+           placeholder:text-hotel-muted
+           transition-colors duration-150;
+  }
+
+  .form-error {
+    @apply text-red-500 text-xs mt-1;
+  }
+
+  .divider {
+    @apply border-t border-hotel-border;
+  }
+}
+
+/* ─── Reduced Motion ────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1efea;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c7a46a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b08d53;
+}
+
+/* ─── Hero Image Overlay ─────────────────────────────────────────────────────── */
+.hero-overlay {
+  background: linear-gradient(
+    to right,
+    rgba(25, 63, 53, 0.72) 0%,
+    rgba(25, 63, 53, 0.4) 50%,
+    rgba(25, 63, 53, 0.15) 100%
+  );
+}
+
+/* Mobile hero overlay */
+@media (max-width: 768px) {
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(25, 63, 53, 0.3) 0%,
+      rgba(25, 63, 53, 0.75) 60%,
+      rgba(25, 63, 53, 0.85) 100%
+    );
+  }
+}
+
+/* ─── Gallery Lightbox ───────────────────────────────────────────────────────── */
+.lightbox-backdrop {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ─── Animate on scroll ──────────────────────────────────────────────────────── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
